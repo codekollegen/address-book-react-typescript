@@ -1,8 +1,9 @@
 import { useMemo } from "react";
-import { Contact } from "../../types/Contact";
+import { ContactPreview } from "../../types/Contact";
+import { Link } from "@reach/router";
 
 type ContactListElementProps = {
-  contact: Contact;
+  contact: ContactPreview;
 };
 
 export const ContactListElement = ({ contact }: ContactListElementProps) => {
@@ -11,9 +12,11 @@ export const ContactListElement = ({ contact }: ContactListElementProps) => {
   }, [contact]);
 
   return (
-    <li className="contact-list-element">
-      {contact.favorite && <div className="contact-fav"></div>}
-      <h2 data-testid="full-name">{fullName}</h2>
-    </li>
+    <Link to={`/contact/${contact.id}`}>
+      <li className="contact-list-element">
+        {contact.favorite && <div className="contact-fav"></div>}
+        <h2 data-testid="full-name">{fullName}</h2>
+      </li>
+    </Link>
   );
 };
