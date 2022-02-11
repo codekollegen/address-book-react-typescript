@@ -1,10 +1,10 @@
-import { Contact } from "../../types/Contact";
+import { Contact, ContactPreview } from "../../types/Contact";
 import { RootState } from "../../app/store";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { fetchContactsFromAPI } from "./contactAPI";
 
 export type ContactState = {
-  data: Contact[];
+  data: ContactPreview[];
   loading: boolean;
 };
 
@@ -15,7 +15,7 @@ const initialState: ContactState = {
 
 export const fetchContacts = createAsyncThunk(
   "contacts/fetch",
-  async (): Promise<Contact[]> => {
+  async (): Promise<ContactPreview[]> => {
     // TODO
     // swr GET api call (e.g. "/api/contacts")
     const response = await fetchContactsFromAPI();
