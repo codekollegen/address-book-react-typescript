@@ -1,0 +1,41 @@
+[
+  {
+    "id": "1",
+    "firstname": "Theodor",
+    "lastname": "Testmann",
+    "company": "",
+    "phones": [],
+    "emails": [],
+    "addresses": [
+      {
+        "label": "private",
+        "value": "Street 54, 12345 Leipzig"
+      }
+    ],
+    "favorite": false
+  },
+  {
+    "id": "2",
+    "firstname": "Hildegard",
+    "lastname": "Hülsenfrucht",
+    "company": "Hildegard GmbH",
+    "phones": [
+      {
+        "label": "home",
+        "value": "+49 12345 123456789"
+      },
+      {
+        "label": "work",
+        "value": "+49 12345 9816372"
+      }
+    ],
+    "emails": [
+      {
+        "label": "private",
+        "value": "hildegard@test.com"
+      }
+    ],
+    "addresses": [],
+    "favorite": true
+  }
+]

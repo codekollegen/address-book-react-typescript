@@ -5,28 +5,24 @@ export enum ElementLabel {
   HOME = "home",
 }
 
-export type PhoneNumber = {
+export type Property = {
   label: ElementLabel;
-  phone: string;
-};
-
-export type EmailAddress = {
-  label: ElementLabel;
-  email: string;
-};
-
-export type Address = {
-  label: ElementLabel;
-  address: string;
+  value: string;
 };
 
 export type Contact = {
+  [key: string]: any;
   id: string;
   firstname: string;
   lastname: string;
   company: string;
-  phones: PhoneNumber[];
-  emails: EmailAddress[];
-  addresses: Address[];
+  phones: Property[];
+  emails: Property[];
+  addresses: Property[];
   favorite: boolean;
 };
+
+export type ContactPreview = Pick<
+  Contact,
+  "id" | "firstname" | "lastname" | "favorite"
+>;

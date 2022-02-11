@@ -1,44 +1,48 @@
-import { Contact, ElementLabel } from "../../types/Contact";
+import { Contact, ContactPreview } from "../../types/Contact";
+import contacts from "../../mock/api/contacts.json";
 
-export function fetchContactsFromAPI() {
-  // TODO
-  // replace by real api call
-  return new Promise<Contact[]>((resolve) =>
-    setTimeout(
-      () =>
-        resolve([
-          {
-            id: "1",
-            firstname: "Theodor",
-            lastname: "Testmann",
-            company: "",
-            phones: [],
-            emails: [],
-            addresses: [],
-            favorite: false,
-          },
-          {
-            id: "2",
-            firstname: "Hildegard",
-            lastname: "Hülsenfrucht",
-            company: "Hildegard GmbH",
-            phones: [
-              {
-                label: ElementLabel.HOME,
-                phone: "+49 12345 123456789",
-              },
-            ],
-            emails: [
-              {
-                label: ElementLabel.PRIVATE,
-                email: "hildegard@test.com",
-              },
-            ],
-            addresses: [],
-            favorite: true,
-          },
-        ]),
-      500
-    )
+/**
+ * Function fetches a list of all contacts in the address book as
+ * ContactPreviews with only id, firstname, lastname and favorite properties
+ *
+ * @returns Promise<ContactPreview[]>
+ */
+export function fetchContactsFromAPI(): Promise<ContactPreview[]> {
+  return new Promise<ContactPreview[]>((resolve) =>
+    setTimeout(() => {
+      const contactsResult = (contacts as Contact[]).map((c: Contact) => {
+        return {
+          id: c.id,
+          firstname: c.firstname,
+          lastname: c.lastname,
+          favorite: c.favorite,
+        };
+      });
+
+      resolve(contactsResult);
+    }, 500)
+  );
+}
+
+/**
+ * Function fetches a single contact from the address book by a
+ * given id as Contact with all properties.
+ *
+ * @param id string
+ * @returns Promise<Contact>
+ */
+export function fetchSingleContactFromAPI(id: string): Promise<Contact> {
+  return new Promise<Contact>((resolve, reject) =>
+    setTimeout(() => {
+      const contact = (contacts as Contact[]).find(
+        (el: Contact) => el.id === id
+      );
+
+      if (contact) {
+        resolve(contact);
+      } else {
+        reject(new Error("No user was found"));
+      }
+    }, 500)
   );
 }
