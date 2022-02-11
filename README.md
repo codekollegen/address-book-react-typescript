@@ -8,6 +8,12 @@ Use it to manage contacts via a simple web ui.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
 
+## Libraries
+
+Routing: [@reach/router](https://github.com/reach/router)
+
+Redux: [@reduxjs/toolkit](https://github.com/reduxjs/redux-toolkit)
+
 ## Available Scripts
 
 For development and testing within the project directory run:
@@ -30,11 +36,11 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 
 ## Todos
 
-- Add React Router for routing
+- ~~Add React Router for routing~~
 - Create useful mock data
 - Create a working api (possibly nodejs, mongodb) for actually saving stuff -> possibly in a separate project
 - Frontend api connection
-- Route for contact detail
+- ~~Route for contact detail~~
 - Functionalities:
   - Add new contact
   - Delete contact
@@ -44,3 +50,4 @@ To learn React, check out the [React documentation](https://reactjs.org/).
   - ...
 - Enhance existing tests
 - Persist theme switch with localStorage
+- ...
