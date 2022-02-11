@@ -8,8 +8,9 @@ import { Loading } from "../Loading";
 import { ContactListElement } from "./ContactListElement";
 import "../../assets/css/ContactList.css";
 import { ContactListOptions } from "./ContactListOptions";
+import { RouteComponentProps } from "@reach/router";
 
-export const ContactList = () => {
+export const ContactList = (props: RouteComponentProps) => {
   const allContacts = useAppSelector(getAllContacts);
   const loading = useAppSelector(loadingState);
   const dispatch = useAppDispatch();
