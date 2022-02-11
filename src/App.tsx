@@ -3,7 +3,7 @@ import { ContactList } from "./components/contacts/ContactList";
 import { ThemeSwitcher } from "./components/ThemeSwitcher";
 import { useAppSelector } from "./app/hooks";
 import { getTheme } from "./features/themeSwitcher/themeSwitcherSlice";
-import { Router } from "@reach/router";
+import { Router, Redirect } from "@reach/router";
 
 /* Assets */
 import logo from "./assets/img/logo.png";
@@ -11,6 +11,7 @@ import logoWhite from "./assets/img/logo-white.png";
 import "./assets/css/App.css";
 import { ContactDetail } from "./components/contacts/ContactDetail";
 import { ContactForm } from "./components/contacts/ContactForm";
+import { NotFound } from "./components/NotFound";
 
 function App() {
   const theme = useAppSelector(getTheme);
@@ -41,6 +42,12 @@ function App() {
 
         {/* Edit an existing contact */}
         <ContactForm path="/edit/:id" />
+
+        {/* 404 */}
+        <NotFound path="/404" />
+
+        {/* Redirect the rest to 404 */}
+        <Redirect noThrow from="*" to="/404" />
       </Router>
     </div>
   );
