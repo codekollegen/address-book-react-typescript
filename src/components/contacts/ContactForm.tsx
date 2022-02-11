@@ -5,5 +5,9 @@ interface ContactFormProps extends RouteComponentProps {
 }
 
 export const ContactForm = (props: ContactFormProps) => {
-  return <div className="contact-form">Contact Form</div>;
+  return (
+    <div className="contact-form" data-testid="contact-form">
+      Contact Form
+    </div>
+  );
 };
