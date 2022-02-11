@@ -19,6 +19,10 @@
   align-items: center;
 }
 
+.contact-list ul li.contact-list-element:hover {
+  background-color: var(--highlight);
+}
+
 .contact-list ul li.contact-list-element .contact-fav {
   width: 20px;
   height: 20px;

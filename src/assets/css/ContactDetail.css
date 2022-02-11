@@ -1,0 +1,20 @@
+.contact-detail-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.contact-detail-grid-element {
+  background: var(--highlight);
+  padding: 1rem;
+}
+
+.contact-detail-grid-element:nth-child(2n + 1) {
+  background: var(--bg);
+}
+
+.contact-detail-grid-element label {
+  font-weight: bold;
+  color: var(--label);
+  font-size: 0.8rem;
+  line-height: 2;
+}
