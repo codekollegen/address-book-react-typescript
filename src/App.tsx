@@ -1,12 +1,13 @@
-import React, { useMemo } from "react";
-import logo from "./logo.png";
-import logoWhite from "./logo-white.png";
-// import { Counter } from "./features/counter/Counter";
+import { useMemo } from "react";
 import { ContactList } from "./components/contacts/ContactList";
-import "./assets/css/App.css";
 import { ThemeSwitcher } from "./components/ThemeSwitcher";
 import { useAppSelector } from "./app/hooks";
 import { getTheme } from "./features/themeSwitcher/themeSwitcherSlice";
+
+/* Assets */
+import logo from "./assets/img/logo.png";
+import logoWhite from "./assets/img/logo-white.png";
+import "./assets/css/App.css";
 
 function App() {
   const theme = useAppSelector(getTheme);
