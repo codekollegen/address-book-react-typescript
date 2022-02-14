@@ -42,8 +42,8 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 - Frontend api connection
 - ~~Route for contact detail~~
 - Functionalities:
-  - Add new contact
-  - Delete contact
+  - ~~Add new contact~~
+  - ~~Delete contact~~
   - Mark/Unmark contact as favorite
   - Sort contact list by different properties
   - contact list display types list and grid
