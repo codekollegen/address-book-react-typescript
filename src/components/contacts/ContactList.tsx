@@ -1,7 +1,6 @@
-import { useAppDispatch, useAppSelector } from "../../app/hooks";
+import { useAppSelector } from "../../app/hooks";
 import {
-  fetchContacts,
-  getAllContacts,
+  getAllContactPreviews,
   loadingState,
 } from "../../features/contacts/contactSlice";
 import { Loading } from "../Loading";
@@ -11,13 +10,8 @@ import { ContactListOptions } from "./ContactListOptions";
 import { RouteComponentProps } from "@reach/router";
 
 export const ContactList = (props: RouteComponentProps) => {
-  const allContacts = useAppSelector(getAllContacts);
+  const allContacts = useAppSelector(getAllContactPreviews);
   const loading = useAppSelector(loadingState);
-  const dispatch = useAppDispatch();
-
-  if (allContacts.length === 0) {
-    dispatch(fetchContacts());
-  }
 
   return (
     <div className="contact-list">
