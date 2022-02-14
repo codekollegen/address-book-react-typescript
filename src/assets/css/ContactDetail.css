@@ -18,3 +18,11 @@
   font-size: 0.8rem;
   line-height: 2;
 }
+
+.contact-detail-options button {
+  margin-left: 0.5rem;
+}
+
+.contact-detail-options a {
+  display: inline-block;
+}
