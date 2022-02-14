@@ -1,35 +1,20 @@
-import { RouteComponentProps } from "@reach/router";
-import { useEffect, useMemo, useState } from "react";
-import { fetchSingleContactFromAPI } from "../../features/contacts/contactAPI";
-import { Contact } from "../../types/Contact";
+import { RouteComponentProps, Link } from "@reach/router";
 import { Loading } from "../Loading";
+import { ContactDetailPropertyList } from "./ContactDetailPropertyList";
 
 // Assets
 import "../../assets/css/ContactDetail.css";
-import { ContactDetailPropertyList } from "./ContactDetailPropertyList";
+import { useContact } from "../../features/contacts/contactHooks";
 
 interface ContactDetailProps extends RouteComponentProps {
   id?: string;
 }
 
 export const ContactDetail = ({ id }: ContactDetailProps) => {
-  const [contact, setContact] = useState<Contact>();
-
-  const fullName = useMemo(() => {
-    return `${contact?.firstname} ${contact?.lastname}`;
-  }, [contact]);
-
-  useEffect(() => {
-    const fetchUser = async () => {
-      const contactResponse = await fetchSingleContactFromAPI(id as string);
-      setContact(contactResponse);
-    };
-
-    fetchUser();
-  }, [id]);
+  const { contact, fullName, deleteContact } = useContact(id);
 
   return (
-    <div className="contact-detail">
+    <div className="contact-detail" data-testid="contact-detail">
       {!contact ? (
         <>
           <h1>Contact Detail</h1>
@@ -38,6 +23,14 @@ export const ContactDetail = ({ id }: ContactDetailProps) => {
       ) : (
         <>
           <h1>{fullName}</h1>
+          <div className="contact-detail-options">
+            <Link to={`/edit/${contact.id}`} className="button xs">
+              Edit
+            </Link>
+            <button className="button xs" onClick={deleteContact}>
+              Delete
+            </button>
+          </div>
           <div className="contact-detail-grid">
             <div className="contact-detail-grid-element">
               <label>Lastname</label>
