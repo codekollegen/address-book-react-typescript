@@ -30,6 +30,7 @@ export const addContact = createAsyncThunk(
   async (contact: Contact): Promise<Contact> => {
     // TODO
     // 1. POST api call (e.g. "/api/contacts")
+    contact.id = Math.random().toString(36).substring(2, 9);
     return contact;
   }
 );
