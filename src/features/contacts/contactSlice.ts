@@ -1,15 +1,17 @@
 import { Contact, ContactPreview } from "../../types/Contact";
 import { RootState } from "../../app/store";
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { fetchContactsFromAPI } from "./contactAPI";
 
 export type ContactState = {
-  data: ContactPreview[];
+  previews: ContactPreview[];
+  contacts: Contact[];
   loading: boolean;
 };
 
 const initialState: ContactState = {
-  data: [],
+  previews: [],
+  contacts: [],
   loading: false,
 };
 
@@ -41,39 +43,106 @@ export const removeContact = createAsyncThunk(
   }
 );
 
+export const updateContact = createAsyncThunk(
+  "contacts/update",
+  async (contact: Contact): Promise<Contact> => {
+    // TODO
+    // 1. PUT api call (e.g. "/api/contacts/<contact.id>")
+    return contact;
+  }
+);
+
 export const contactSlice = createSlice({
   name: "contact",
   initialState,
-  reducers: {},
+  reducers: {
+    addOrUpdateContact(state, action: PayloadAction<Contact>) {
+      let existing = state.contacts.find((c) => c.id === action.payload.id);
+      if (existing) {
+        existing = action.payload;
+      } else {
+        state.contacts.push(action.payload);
+      }
+    },
+  },
   extraReducers: (builder) => {
     builder
 
+      /* (1)(A) FETCH CONTACT PREVIEWS -> PENDING */
       .addCase(fetchContacts.pending, (state) => {
         state.loading = true;
       })
 
+      /* (1)(B) FETCH CONTACT PREVIEWS -> FULFILLED */
       .addCase(fetchContacts.fulfilled, (state, action) => {
-        state.data = action.payload;
+        // Only add previews, since fetching all contacts is heavy
+        state.previews = action.payload;
         state.loading = false;
       })
 
+      /* (2)(A) ADD NEW CONTACT -> FULFILLED */
       .addCase(addContact.fulfilled, (state, action) => {
-        state.data.push(action.payload);
+        // Add to contacts
+        state.contacts.push(action.payload);
+
+        // Add to previews
+        const { id, firstname, lastname, favorite } = action.payload;
+        state.previews.push({
+          id: id,
+          firstname: firstname,
+          lastname: lastname,
+          favorite: favorite,
+        });
       })
 
+      /* (3)(A) UPDATE EXISTING CONTACT -> FULFILLED */
+      .addCase(updateContact.fulfilled, (state, action) => {
+        // Remove from previews
+        state.previews = state.previews.filter(
+          (contact) => contact.id !== action.payload.id
+        );
+
+        // Re-Add to previews
+        const { id, firstname, lastname, favorite } = action.payload;
+        state.previews.push({
+          id: id,
+          firstname: firstname,
+          lastname: lastname,
+          favorite: favorite,
+        });
+
+        // Remove from contacts
+        state.contacts = state.contacts.filter(
+          (contact) => contact.id !== action.payload.id
+        );
+
+        // Re-Add to contacts
+        state.contacts.push(action.payload);
+      })
+
+      /* (4)(A) DELETE EXISTING CONTACT -> FULFILLED */
       .addCase(removeContact.fulfilled, (state, action) => {
-        state.data = state.data.filter(
+        // Remove from previews
+        state.previews = state.previews.filter(
+          (contact) => contact.id !== action.payload.id
+        );
+
+        // Remove from contacts
+        state.contacts = state.contacts.filter(
           (contact) => contact.id !== action.payload.id
         );
       });
   },
 });
 
-export const getAllContacts = (state: RootState) => state.contacts.data;
+export const { addOrUpdateContact } = contactSlice.actions;
+
+export const getAllContactPreviews = (state: RootState) =>
+  state.contacts.previews;
+
+export const getContact = (state: RootState) => (id: string) =>
+  state.contacts.contacts.find((el) => el.id === id);
 
 export const loadingState = (state: RootState) => state.contacts.loading;
-
-export const getFavoriteContacts = (state: RootState) =>
-  state.contacts.data.filter((contact) => contact.favorite);
 
 export default contactSlice.reducer;
