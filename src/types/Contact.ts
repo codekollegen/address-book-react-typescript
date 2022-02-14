@@ -11,7 +11,7 @@ export type Property = {
 };
 
 export type Contact = {
-  [key: string]: any;
+  // [key: string]: any;
   id: string;
   firstname: string;
   lastname: string;
