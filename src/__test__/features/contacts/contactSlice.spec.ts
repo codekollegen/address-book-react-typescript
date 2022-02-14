@@ -4,13 +4,15 @@ import contactReducer, {
 
 describe("contact reducer", () => {
   const initialState: ContactState = {
-    data: [],
+    previews: [],
+    contacts: [],
     loading: false,
   };
 
   it("should handle initial state", () => {
     expect(contactReducer(undefined, { type: "unknown" })).toEqual({
-      data: [],
+      previews: [],
+      contacts: [],
       loading: false,
     });
   });
