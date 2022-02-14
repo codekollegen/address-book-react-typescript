@@ -1,10 +1,14 @@
 .contact-form fieldset {
+  border: none;
+  padding: 0;
+  margin: 1.5rem 0;
+}
+
+.contact-form fieldset .form-group {
   display: grid;
   grid-template-columns: 1fr;
   gap: 0.5rem;
   border: none;
-  padding: 0;
-  margin: 1.5rem 0;
 }
 
 input[type="text"] {
@@ -18,4 +22,26 @@ input[type="text"] {
 
 input[type="text"]:focus {
   box-shadow: 0 2px 0 var(--fg);
+}
+
+.form-group .form-validation:not(:empty) {
+  padding: 0.5rem;
+  color: tomato;
+  background: rgba(255, 99, 71, 0.249);
+  width: fit-content;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+  font-size: 0.8rem;
+  font-weight: bold;
+  position: relative;
+}
+
+.form-group .form-validation:not(:empty)::before {
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-bottom: 7px solid rgba(255, 99, 71, 0.249);
+  content: " ";
+  top: -7px;
+  left: 10px;
+  position: absolute;
 }

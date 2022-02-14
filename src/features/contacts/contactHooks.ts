@@ -66,19 +66,25 @@ export const useContact = (id: string | undefined) => {
     []
   );
 
+  useEffect(() => {
+    if (contactFromStore !== undefined) {
+      setContact(contactFromStore);
+    }
+  }, [contactFromStore]);
+
   /* Memoized value fullname that combines firstname and lastname */
   const fullName = useMemo(() => {
     return `${contact?.firstname} ${contact?.lastname}`;
   }, [contact]);
 
   /* Add a new contact */
-  const pushContact = () => {
-    dispatch(addContact(contact));
+  const pushContact = async (data: any) => {
+    dispatch(addContact({ ...contact, ...data }));
   };
 
   /* Update an existing contact */
-  const putContact = () => {
-    dispatch(updateContact(contact));
+  const putContact = (data: any) => {
+    dispatch(updateContact({ ...contact, ...data }));
   };
 
   /* Delete a contact */
