@@ -1,0 +1,21 @@
+.contact-form fieldset {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.5rem;
+  border: none;
+  padding: 0;
+  margin: 1.5rem 0;
+}
+
+input[type="text"] {
+  padding: 0.5rem;
+  border-radius: 3px;
+  border: 1px solid var(--fg);
+  outline: none;
+  background: var(--bg);
+  color: var(--fg);
+}
+
+input[type="text"]:focus {
+  box-shadow: 0 2px 0 var(--fg);
+}
