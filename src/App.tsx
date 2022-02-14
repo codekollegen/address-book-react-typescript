@@ -1,7 +1,7 @@
-import { useMemo } from "react";
+import { useEffect, useMemo } from "react";
 import { ContactList } from "./components/contacts/ContactList";
 import { ThemeSwitcher } from "./components/ThemeSwitcher";
-import { useAppSelector } from "./app/hooks";
+import { useAppDispatch, useAppSelector } from "./app/hooks";
 import { getTheme } from "./features/themeSwitcher/themeSwitcherSlice";
 import { Router, Redirect } from "@reach/router";
 
@@ -12,6 +12,7 @@ import "./assets/css/App.css";
 import { ContactDetail } from "./components/contacts/ContactDetail";
 import { ContactForm } from "./components/contacts/ContactForm";
 import { NotFound } from "./components/NotFound";
+import { fetchContacts } from "./features/contacts/contactSlice";
 
 function App() {
   const theme = useAppSelector(getTheme);
@@ -24,6 +25,12 @@ function App() {
       return logoWhite;
     }
   }, [theme]);
+
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(fetchContacts());
+  }, [dispatch]);
 
   return (
     <div className="App" data-testid="app">
