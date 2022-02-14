@@ -15,7 +15,7 @@ export type Contact = {
   id: string;
   firstname: string;
   lastname: string;
-  company: string;
+  company?: string;
   phones: Property[];
   emails: Property[];
   addresses: Property[];
