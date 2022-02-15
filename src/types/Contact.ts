@@ -1,8 +1,8 @@
 export enum ElementLabel {
-  PRIVATE = "private",
-  WORK = "work",
-  MOBILE = "mobile",
-  HOME = "home",
+  PRIVATE = "PRIVATE",
+  WORK = "WORK",
+  MOBILE = "MOBILE",
+  HOME = "HOME",
 }
 
 export type Property = {

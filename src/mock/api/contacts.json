@@ -21,17 +21,17 @@
     "company": "Hildegard GmbH",
     "phones": [
       {
-        "label": "home",
+        "label": "HOME",
         "value": "+49 12345 123456789"
       },
       {
-        "label": "work",
+        "label": "WORK",
         "value": "+49 12345 9816372"
       }
     ],
     "emails": [
       {
-        "label": "private",
+        "label": "PRIVATE",
         "value": "hildegard@test.com"
       }
     ],
