@@ -2,11 +2,11 @@ import { RouteComponentProps } from "@reach/router";
 import { useContact } from "../../features/contacts/contactHooks";
 import { Loading } from "../Loading";
 import { useForm, useFieldArray } from "react-hook-form";
+import { useEffect } from "react";
+import { ElementLabel } from "../../types/Contact";
 
 // Assets
 import "../../assets/css/ContactForm.css";
-import { useEffect } from "react";
-import { ElementLabel } from "../../types/Contact";
 
 interface ContactFormProps extends RouteComponentProps {
   id?: string;

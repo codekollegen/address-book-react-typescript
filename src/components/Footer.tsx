@@ -1,3 +1,4 @@
+/* Assets */
 import "../assets/css/Footer.css";
 
 export const Footer = () => {

@@ -1,10 +1,10 @@
 import { RouteComponentProps, Link } from "@reach/router";
 import { Loading } from "../Loading";
 import { ContactDetailPropertyList } from "./ContactDetailPropertyList";
+import { useContact } from "../../features/contacts/contactHooks";
 
 // Assets
 import "../../assets/css/ContactDetail.css";
-import { useContact } from "../../features/contacts/contactHooks";
 
 interface ContactDetailProps extends RouteComponentProps {
   id?: string;

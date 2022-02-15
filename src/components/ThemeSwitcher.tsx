@@ -4,6 +4,8 @@ import {
   getTheme,
   setTheme,
 } from "../features/themeSwitcher/themeSwitcherSlice";
+
+/* Assets */
 import "../assets/css/ThemeSwitcher.css";
 
 export const ThemeSwitcher = () => {

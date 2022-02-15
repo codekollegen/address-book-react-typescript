@@ -5,9 +5,11 @@ import {
 } from "../../features/contacts/contactSlice";
 import { Loading } from "../Loading";
 import { ContactListElement } from "./ContactListElement";
-import "../../assets/css/ContactList.css";
 import { ContactListOptions } from "./ContactListOptions";
 import { RouteComponentProps } from "@reach/router";
+
+/* Assets */
+import "../../assets/css/ContactList.css";
 
 export const ContactList = (props: RouteComponentProps) => {
   const allContacts = useAppSelector(getAllContactPreviews);

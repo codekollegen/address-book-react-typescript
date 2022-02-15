@@ -7,11 +7,8 @@ export const ContactListOptions = () => {
   return (
     <div className="contact-list-options">
       <Link to="/create" className="button">
-        + Create New
+        + create new contact
       </Link>
-      {/*<button className="button">Only Favorites (todo)</button>*/}
-      Todos: show only favorites / sort by firstname/lastname / display type:
-      list, grid
     </div>
   );
 };
