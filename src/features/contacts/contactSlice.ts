@@ -25,8 +25,8 @@ export const fetchContacts = createAsyncThunk(
   }
 );
 
-export const addContact = createAsyncThunk(
-  "contacts/add",
+export const postContact = createAsyncThunk(
+  "contact/post",
   async (contact: Contact): Promise<Contact> => {
     // TODO
     // 1. POST api call (e.g. "/api/contacts")
@@ -35,8 +35,8 @@ export const addContact = createAsyncThunk(
   }
 );
 
-export const removeContact = createAsyncThunk(
-  "contacts/remove",
+export const deleteContact = createAsyncThunk(
+  "contact/delete",
   async (contact: Contact): Promise<Contact> => {
     // TODO
     // 1. DELETE api call (e.g. "/api/contacts/<contact.id>")
@@ -44,8 +44,8 @@ export const removeContact = createAsyncThunk(
   }
 );
 
-export const updateContact = createAsyncThunk(
-  "contacts/update",
+export const putContact = createAsyncThunk(
+  "contact/put",
   async (contact: Contact): Promise<Contact> => {
     // TODO
     // 1. PUT api call (e.g. "/api/contacts/<contact.id>")
@@ -82,7 +82,7 @@ export const contactSlice = createSlice({
       })
 
       /* (2)(A) ADD NEW CONTACT -> FULFILLED */
-      .addCase(addContact.fulfilled, (state, action) => {
+      .addCase(postContact.fulfilled, (state, action) => {
         // Add to contacts
         state.contacts.push(action.payload);
 
@@ -97,7 +97,7 @@ export const contactSlice = createSlice({
       })
 
       /* (3)(A) UPDATE EXISTING CONTACT -> FULFILLED */
-      .addCase(updateContact.fulfilled, (state, action) => {
+      .addCase(putContact.fulfilled, (state, action) => {
         // Remove from previews
         state.previews = state.previews.filter(
           (contact) => contact.id !== action.payload.id
@@ -122,7 +122,7 @@ export const contactSlice = createSlice({
       })
 
       /* (4)(A) DELETE EXISTING CONTACT -> FULFILLED */
-      .addCase(removeContact.fulfilled, (state, action) => {
+      .addCase(deleteContact.fulfilled, (state, action) => {
         // Remove from previews
         state.previews = state.previews.filter(
           (contact) => contact.id !== action.payload.id

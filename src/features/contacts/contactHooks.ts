@@ -3,9 +3,9 @@ import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { Contact } from "../../types/Contact";
 import { fetchSingleContactFromAPI } from "./contactAPI";
 import {
-  addContact,
-  updateContact,
-  removeContact,
+  postContact,
+  putContact,
+  deleteContact,
   addOrUpdateContact,
   getContact,
 } from "./contactSlice";
@@ -78,20 +78,20 @@ export const useContact = (id: string | undefined) => {
   }, [contact]);
 
   /* Add a new contact */
-  const pushContact = async (data: any) => {
-    dispatch(addContact({ ...contact, ...data }));
+  const addContact = async (data: any) => {
+    dispatch(postContact({ ...contact, ...data }));
   };
 
   /* Update an existing contact */
-  const putContact = (data: any) => {
-    dispatch(updateContact({ ...contact, ...data }));
+  const updateContact = (data: any) => {
+    dispatch(putContact({ ...contact, ...data }));
   };
 
   /* Delete a contact */
-  const deleteContact = async () => {
+  const removeContact = async () => {
     if (window.confirm("Do you really want to delete this contact?")) {
       if (contact) {
-        await dispatch(removeContact(contact));
+        await dispatch(deleteContact(contact));
       }
     }
   };
@@ -101,8 +101,8 @@ export const useContact = (id: string | undefined) => {
     loading,
     fullName,
     setContact,
-    pushContact,
-    putContact,
-    deleteContact,
+    addContact,
+    updateContact,
+    removeContact,
   };
 };

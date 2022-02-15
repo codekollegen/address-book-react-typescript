@@ -11,7 +11,7 @@ interface ContactDetailProps extends RouteComponentProps {
 }
 
 export const ContactDetail = ({ id }: ContactDetailProps) => {
-  const { loading, contact, fullName, deleteContact } = useContact(id);
+  const { loading, contact, fullName, removeContact } = useContact(id);
 
   return (
     <div className="contact-detail" data-testid="contact-detail">
@@ -27,7 +27,7 @@ export const ContactDetail = ({ id }: ContactDetailProps) => {
             <Link to={`/edit/${contact.id}`} className="button xs">
               Edit
             </Link>
-            <button className="button xs" onClick={deleteContact}>
+            <button className="button xs" onClick={removeContact}>
               Delete
             </button>
           </div>

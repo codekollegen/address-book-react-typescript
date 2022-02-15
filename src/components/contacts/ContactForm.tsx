@@ -13,8 +13,14 @@ interface ContactFormProps extends RouteComponentProps {
 }
 
 export const ContactForm = ({ id }: ContactFormProps) => {
-  const { contact, loading, fullName, deleteContact, pushContact, putContact } =
-    useContact(id);
+  const {
+    contact,
+    loading,
+    fullName,
+    removeContact,
+    addContact,
+    updateContact,
+  } = useContact(id);
 
   const {
     register,
@@ -52,11 +58,11 @@ export const ContactForm = ({ id }: ContactFormProps) => {
       {loading && <Loading />}
       <form
         onSubmit={handleSubmit((data) => {
-          console.log(data);
+          console.log("submit", data);
           if (id) {
-            putContact(data);
+            updateContact(data);
           } else {
-            pushContact(data);
+            addContact(data);
           }
         })}
       >
@@ -330,7 +336,13 @@ export const ContactForm = ({ id }: ContactFormProps) => {
         />
 
         {id && (
-          <button className="button xs" onClick={deleteContact}>
+          <button
+            className="button xs"
+            onClick={(e) => {
+              e.preventDefault();
+              removeContact();
+            }}
+          >
             Delete
           </button>
         )}
