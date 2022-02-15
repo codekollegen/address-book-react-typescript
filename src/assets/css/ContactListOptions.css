@@ -1,5 +1,10 @@
 .contact-list-options {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 1rem;
+}
+
+.contact-list-options .button {
+  width: fit-content;
+  margin: 1rem auto;
 }
