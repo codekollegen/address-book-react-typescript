@@ -44,7 +44,8 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 - Functionalities:
   - ~~Add new contact~~
   - ~~Delete contact~~
-  - Mark/Unmark contact as favorite
+  - ~~Update contact~~
+  - ~~Mark/Unmark contact as favorite~~
   - Sort contact list by different properties
   - contact list display types list and grid
   - ...
