@@ -11,11 +11,11 @@ interface ContactDetailProps extends RouteComponentProps {
 }
 
 export const ContactDetail = ({ id }: ContactDetailProps) => {
-  const { contact, fullName, deleteContact } = useContact(id);
+  const { loading, contact, fullName, deleteContact } = useContact(id);
 
   return (
     <div className="contact-detail" data-testid="contact-detail">
-      {!contact ? (
+      {loading ? (
         <>
           <h1>Contact Detail</h1>
           <Loading />
