@@ -1,0 +1,19 @@
+.menu {
+  padding: 0;
+  margin: 0;
+}
+
+.menu ul {
+  padding: 0;
+  margin: 0;
+}
+
+.menu ul li {
+  list-style: none;
+  display: inline-block;
+  margin: 0 1rem;
+}
+
+.menu ul li:first-child {
+  margin-left: 0;
+}

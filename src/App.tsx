@@ -1,42 +1,29 @@
-import { useEffect, useMemo } from "react";
 import { ContactList } from "./components/contacts/ContactList";
 import { ThemeSwitcher } from "./components/ThemeSwitcher";
-import { useAppDispatch, useAppSelector } from "./app/hooks";
-import { getTheme } from "./features/themeSwitcher/themeSwitcherSlice";
 import { Router, Redirect } from "@reach/router";
-
-/* Assets */
-import logo from "./assets/img/logo.png";
-import logoWhite from "./assets/img/logo-white.png";
-import "./assets/css/App.css";
 import { ContactDetail } from "./components/contacts/ContactDetail";
 import { ContactForm } from "./components/contacts/ContactForm";
 import { NotFound } from "./components/NotFound";
-import { fetchContacts } from "./features/contacts/contactSlice";
+import { Menu } from "./components/Menu";
+import { Row } from "./components/Row";
+import { Logo } from "./components/Logo";
+
+/* Assets */
+import "./assets/css/App.css";
 
 function App() {
-  const theme = useAppSelector(getTheme);
-  const logoToShow = useMemo(() => {
-    if (theme === "light") {
-      return logo;
-    }
-
-    if (theme === "dark") {
-      return logoWhite;
-    }
-  }, [theme]);
-
-  const dispatch = useAppDispatch();
-
-  useEffect(() => {
-    dispatch(fetchContacts());
-  }, [dispatch]);
-
   return (
     <div className="App" data-testid="app">
-      <ThemeSwitcher />
-      <img src={logoToShow} alt="Logo" title="Logo" className="App-logo" />
+      {/* Top Bar */}
+      <Row>
+        <Menu />
+        <ThemeSwitcher />
+      </Row>
 
+      {/* Logo */}
+      <Logo />
+
+      {/* Content Area */}
       <Router>
         {/* Contact list for listing all available contacts */}
         <ContactList path="/" />
