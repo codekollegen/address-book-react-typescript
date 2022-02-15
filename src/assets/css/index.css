@@ -4,6 +4,7 @@
   --highlight: #eeeeee;
   --link: rgb(255, 0, 162);
   --label: #aaa;
+  --error: tomato;
 }
 
 [data-theme="dark"] {
@@ -12,6 +13,10 @@
   --highlight: #444444;
   --link: rgb(255, 0, 162);
   --label: #aaa;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 body {
@@ -53,6 +58,11 @@ code {
   padding: 0.4rem 1rem;
 }
 
+.button.delete {
+  border-color: var(--error);
+  color: var(--error);
+}
+
 .button:hover {
   background: var(--fg);
   color: var(--bg);
@@ -61,6 +71,10 @@ code {
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 2px 2px rgba(0, 0, 0, 0.12),
     0 4px 4px rgba(0, 0, 0, 0.12), 0 8px 8px rgba(0, 0, 0, 0.12),
     0 16px 16px rgba(0, 0, 0, 0.12);
+}
+
+.button.delete:hover {
+  background-color: var(--error);
 }
 
 a {
