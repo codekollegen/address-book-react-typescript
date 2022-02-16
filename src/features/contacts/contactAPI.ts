@@ -1,5 +1,6 @@
 import { Contact, ContactPreview } from "../../types/Contact";
-import contacts from "../../mock/api/contacts.json";
+import axios from "axios";
+import { API } from "../../Constants";
 
 /**
  * Function fetches a list of all contacts in the address book as
@@ -7,22 +8,10 @@ import contacts from "../../mock/api/contacts.json";
  *
  * @returns Promise<ContactPreview[]>
  */
-export function fetchContactsFromAPI(): Promise<ContactPreview[]> {
-  return new Promise<ContactPreview[]>((resolve) =>
-    setTimeout(() => {
-      const contactsResult = (contacts as Contact[]).map((c: Contact) => {
-        return {
-          id: c.id,
-          firstname: c.firstname,
-          lastname: c.lastname,
-          favorite: c.favorite,
-        };
-      });
-
-      resolve(contactsResult);
-    }, 500)
-  );
-}
+export const fetchAll = async (): Promise<ContactPreview[]> => {
+  const contacts = await axios.get(`${API}/contacts`);
+  return contacts.data;
+};
 
 /**
  * Function fetches a single contact from the address book by a
@@ -31,18 +20,7 @@ export function fetchContactsFromAPI(): Promise<ContactPreview[]> {
  * @param id string
  * @returns Promise<Contact>
  */
-export function fetchSingleContactFromAPI(id: string): Promise<Contact> {
-  return new Promise<Contact>((resolve, reject) =>
-    setTimeout(() => {
-      const contact = (contacts as Contact[]).find(
-        (el: Contact) => el.id === id
-      );
-
-      if (contact) {
-        resolve(contact);
-      } else {
-        reject(new Error("No user was found"));
-      }
-    }, 500)
-  );
-}
+export const fetchOne = async (id: string): Promise<Contact> => {
+  const contact = await axios.get(`${API}/contacts/${id}`);
+  return contact.data;
+};

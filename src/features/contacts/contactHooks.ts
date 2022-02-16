@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { Contact } from "../../types/Contact";
-import { fetchSingleContactFromAPI } from "./contactAPI";
+import { fetchOne } from "./contactAPI";
 import {
   postContact,
   putContact,
@@ -37,7 +37,7 @@ export const useContact = (id: string | undefined) => {
         setLoading(true);
 
         /* Fetch the contact from api */
-        const contactResponse = await fetchSingleContactFromAPI(id as string);
+        const contactResponse = await fetchOne(id as string);
 
         /* add fetched contact to the store */
         dispatch(addOrUpdateContact(contactResponse));
