@@ -1,7 +1,7 @@
 import { Contact, ContactPreview } from "../../types/Contact";
 import { RootState } from "../../app/store";
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { fetchAll } from "./contactAPI";
+import { createContact, fetchAll } from "./contactAPI";
 
 export type ContactState = {
   previews: ContactPreview[];
@@ -30,8 +30,9 @@ export const postContact = createAsyncThunk(
   async (contact: Contact): Promise<Contact> => {
     // TODO
     // 1. POST api call (e.g. "/api/contacts")
-    contact.id = Math.random().toString(36).substring(2, 9);
-    return contact;
+
+    const response = await createContact(contact);
+    return response;
   }
 );
 

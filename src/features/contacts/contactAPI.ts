@@ -9,8 +9,8 @@ import { API } from "../../Constants";
  * @returns Promise<ContactPreview[]>
  */
 export const fetchAll = async (): Promise<ContactPreview[]> => {
-  const contacts = await axios.get(`${API}/contacts`);
-  return contacts.data;
+  const response = await axios.get(`${API}/contacts`);
+  return response.data;
 };
 
 /**
@@ -21,6 +21,11 @@ export const fetchAll = async (): Promise<ContactPreview[]> => {
  * @returns Promise<Contact>
  */
 export const fetchOne = async (id: string): Promise<Contact> => {
-  const contact = await axios.get(`${API}/contacts/${id}`);
-  return contact.data;
+  const response = await axios.get(`${API}/contacts/${id}`);
+  return response.data;
+};
+
+export const createContact = async (contact: Contact): Promise<Contact> => {
+  const response = await axios.post(`${API}/contacts`, contact);
+  return response.data;
 };
