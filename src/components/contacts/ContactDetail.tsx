@@ -49,17 +49,23 @@ export const ContactDetail = ({ id }: ContactDetailProps) => {
 
             <div className="contact-detail-grid-element">
               <label>Phonenumbers</label>
-              <ContactDetailPropertyList propertyList={contact.phones} />
+              {contact.phones && (
+                <ContactDetailPropertyList propertyList={contact.phones} />
+              )}
             </div>
 
             <div className="contact-detail-grid-element">
               <label>Emails</label>
-              <ContactDetailPropertyList propertyList={contact.emails} />
+              {contact.emails && (
+                <ContactDetailPropertyList propertyList={contact.emails} />
+              )}
             </div>
 
             <div className="contact-detail-grid-element">
               <label>Addresses</label>
-              <ContactDetailPropertyList propertyList={contact.addresses} />
+              {contact.addresses && (
+                <ContactDetailPropertyList propertyList={contact.addresses} />
+              )}
             </div>
           </div>
         </>
