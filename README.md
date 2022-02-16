@@ -14,17 +14,29 @@ Routing: [@reach/router](https://github.com/reach/router)
 
 Redux: [@reduxjs/toolkit](https://github.com/reduxjs/redux-toolkit)
 
+Axios: [axios/axios](https://github.com/axios/axios)
+
+Jest: [facebook/jest](https://github.com/facebook/jest)
+
+## Before you start
+
+Before running the project create a `.env` file to configure the api. See the existing `.env.sample`
+
+The frontend will require a running api. You will find that under:
+
+[codekollegen/address-book-backend-nodejs](https://github.com/codekollegen/address-book-backend-nodejs)
+
 ## Available Scripts
 
 For development and testing within the project directory run:
 
-### `npm start`
+`npm start`
 
-### `npm test`
+`npm test`
 
 For a production build run:
 
-### `npm run build`
+`npm run build`
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
@@ -37,9 +49,8 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 ## Todos
 
 - ~~Add React Router for routing~~
-- Create useful mock data
-- Create a working api (possibly nodejs, mongodb) for actually saving stuff -> possibly in a separate project
-- Frontend api connection
+- ~~Create a working api (possibly nodejs, mongodb) for actually saving stuff -> possibly in a separate project~~
+- ~~Frontend api connection~~
 - ~~Route for contact detail~~
 - Functionalities:
   - ~~Add new contact~~
