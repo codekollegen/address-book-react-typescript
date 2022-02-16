@@ -29,3 +29,8 @@ export const createContact = async (contact: Contact): Promise<Contact> => {
   const response = await axios.post(`${API}/contacts`, contact);
   return response.data;
 };
+
+export const updateContact = async (contact: Contact): Promise<Contact> => {
+  const response = await axios.put(`${API}/contacts/${contact.id}`, contact);
+  return response.data;
+};
