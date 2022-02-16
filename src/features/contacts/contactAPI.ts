@@ -34,3 +34,8 @@ export const updateContact = async (contact: Contact): Promise<Contact> => {
   const response = await axios.put(`${API}/contacts/${contact.id}`, contact);
   return response.data;
 };
+
+export const removeContact = async (id: string): Promise<any> => {
+  const response = await axios.delete(`${API}/contacts/${id}`);
+  return response.data;
+};

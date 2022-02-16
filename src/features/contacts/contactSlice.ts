@@ -1,7 +1,12 @@
 import { Contact, ContactPreview } from "../../types/Contact";
 import { RootState } from "../../app/store";
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { createContact, fetchAll, updateContact } from "./contactAPI";
+import {
+  createContact,
+  fetchAll,
+  removeContact,
+  updateContact,
+} from "./contactAPI";
 
 export type ContactState = {
   previews: ContactPreview[];
@@ -44,8 +49,7 @@ export const putContact = createAsyncThunk(
 export const deleteContact = createAsyncThunk(
   "contact/delete",
   async (contact: Contact): Promise<Contact> => {
-    // TODO
-    // 1. DELETE api call (e.g. "/api/contacts/<contact.id>")
+    await removeContact(contact.id);
     return contact;
   }
 );
