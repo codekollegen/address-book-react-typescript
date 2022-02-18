@@ -1,4 +1,4 @@
-import { RouteComponentProps, Link } from "@reach/router";
+import { RouteComponentProps, Link, useNavigate } from "@reach/router";
 import { Loading } from "../Loading";
 import { ContactDetailPropertyList } from "./ContactDetailPropertyList";
 import { useContact } from "../../features/contacts/contactHooks";
@@ -12,6 +12,7 @@ interface ContactDetailProps extends RouteComponentProps {
 
 export const ContactDetail = ({ id }: ContactDetailProps) => {
   const { loading, contact, fullName, removeContact } = useContact(id);
+  const navigate = useNavigate();
 
   return (
     <div className="contact-detail" data-testid="contact-detail">
@@ -27,7 +28,14 @@ export const ContactDetail = ({ id }: ContactDetailProps) => {
             <Link to={`/edit/${contact.id}`} className="button xs">
               Edit
             </Link>
-            <button className="button xs" onClick={removeContact}>
+            <button
+              className="button xs"
+              onClick={(e) => {
+                e.preventDefault();
+                removeContact();
+                navigate("/");
+              }}
+            >
               Delete
             </button>
           </div>

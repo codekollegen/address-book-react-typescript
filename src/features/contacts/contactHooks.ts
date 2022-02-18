@@ -83,7 +83,7 @@ export const useContact = (id: string | undefined) => {
   };
 
   /* Update an existing contact */
-  const updateContact = (data: any) => {
+  const updateContact = async (data: any) => {
     dispatch(putContact({ ...contact, ...data }));
   };
 

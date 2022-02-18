@@ -1,4 +1,4 @@
-import { RouteComponentProps } from "@reach/router";
+import { useNavigate, RouteComponentProps } from "@reach/router";
 import { useContact } from "../../features/contacts/contactHooks";
 import { Loading } from "../Loading";
 import { useForm, useFieldArray } from "react-hook-form";
@@ -13,6 +13,8 @@ interface ContactFormProps extends RouteComponentProps {
 }
 
 export const ContactForm = ({ id }: ContactFormProps) => {
+  const navigate = useNavigate();
+
   const {
     contact,
     loading,
@@ -64,6 +66,8 @@ export const ContactForm = ({ id }: ContactFormProps) => {
           } else {
             addContact(data);
           }
+
+          navigate("/");
         })}
       >
         <fieldset>
@@ -341,6 +345,7 @@ export const ContactForm = ({ id }: ContactFormProps) => {
             onClick={(e) => {
               e.preventDefault();
               removeContact();
+              navigate("/");
             }}
           >
             Delete
